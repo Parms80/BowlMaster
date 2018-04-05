@@ -179,6 +179,7 @@
 -define:ENABLE_NATIVE_ARRAY_CHECKS
 'Assets/Scripts/Ball.cs'
 'Assets/Scripts/CameraControl.cs'
+'Assets/Scripts/Destroyer.cs'
 'Assets/Scripts/DragLaunch.cs'
 'Assets/Scripts/Pin.cs'
 'Assets/Scripts/PinSetter.cs'
