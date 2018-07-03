@@ -6,42 +6,55 @@ using UnityEngine.UI;
 public class PinSetter : MonoBehaviour {
 
 	public Text standingDisplay;
-	public int lastStandingCount = -1;
-	public float distanceToRaise = 40f;
-	private bool ballEnteredBox = false;
+	public GameObject pinSet;
+	private bool ballOutOfPlay = false;
+	private int lastStandingCount = -1;
 	private float lastChangeTime;
+	private int lastSettledCount = 10;
 	private Ball ball;
+	private Animator animator;
+
+	ActionMaster actionMaster = new ActionMaster();		// We need it here as we only want one instance
 
 	void Start () {
 		ball = GameObject.FindObjectOfType<Ball> ();
+		animator = GetComponent<Animator> ();
 	}
 	
 	void Update () {
 		standingDisplay.text = CountStanding ().ToString ();
 
-		if (ballEnteredBox) {
-			CheckStandingCount ();
+		if (ballOutOfPlay) {
+			UpdateStandingCountAndSettle ();
+			standingDisplay.color = Color.red;
 		}
 	}
 
+	public void SetBallOutOfPlay() {
+		ballOutOfPlay = true;
+	}
+
+	// Raise standing pins during tidy
 	public void RaisePins() {
-		Debug.Log ("Raising pins");
 		foreach (Pin pin in GameObject.FindObjectsOfType<Pin>()) {
-			if (pin.IsStanding ()) {
-				pin.transform.Translate (new Vector3 (0.0f, 0.5f, 0.0f));
-			}
+			pin.RaiseIfStanding();
 		}
 	}
 
 	public void LowerPins() {
-		Debug.Log ("Lowering pins");
+		foreach (Pin pin in GameObject.FindObjectsOfType<Pin>()) {
+			pin.Lower();
+		}
 	}
 
+	// Clear all pins
 	public void RenewPins() {
-		Debug.Log ("Renewing pins");
+		GameObject newPins = Instantiate (pinSet);
+		newPins.transform.position += new Vector3 (0, 50, 0);
+//		Instantiate (pinSet, new Vector3 (0, 0, 1829), Quaternion.identity);
 	}
 
-	void CheckStandingCount() {
+	void UpdateStandingCountAndSettle () {
 		int numStandingThisFrame = CountStanding ();
 		if (numStandingThisFrame != lastStandingCount) {
 			lastStandingCount = numStandingThisFrame;
@@ -56,10 +69,11 @@ public class PinSetter : MonoBehaviour {
 	}
 
 	void PinsHaveSettled() {
+		TriggerPinsetterAnimationBasedOnPinsKnockedDown ();
 		ball.Reset ();
 		lastStandingCount = -1;
 		standingDisplay.color = Color.green;
-		ballEnteredBox = false;
+		ballOutOfPlay = false;
 	}
 
 	int CountStanding() {
@@ -72,18 +86,22 @@ public class PinSetter : MonoBehaviour {
 		return numStanding;
 	}
 
-	void OnTriggerEnter(Collider collider) {
-		GameObject thingHit = collider.gameObject;
-		if (thingHit.GetComponent<Ball>()) {
-			standingDisplay.color = Color.red;
-			ballEnteredBox = true;
-		}
-	}
+	void TriggerPinsetterAnimationBasedOnPinsKnockedDown() {
+		int standing = CountStanding ();
+		int pinFall = lastSettledCount - standing;
+		lastSettledCount = standing;
 
-	void OnTriggerExit (Collider collider) {
-		GameObject thingLeft = collider.gameObject;
-		if (thingLeft.GetComponent<Pin> ()) {
-			Destroy (thingLeft);
+		ActionMaster.Action action = actionMaster.Bowl (pinFall);
+		Debug.Log (action);
+
+		if (action == ActionMaster.Action.Tidy) {
+			animator.SetTrigger ("tidyTrigger");
+		} else if (action == ActionMaster.Action.Reset ||
+			action == ActionMaster.Action.EndTurn) {
+			animator.SetTrigger ("resetTrigger");
+			lastSettledCount = 10;
+		} else if (action == ActionMaster.Action.EndGame) {
+			throw new UnityException ("Don't know how to handle end game yet");
 		}
 	}
 }
