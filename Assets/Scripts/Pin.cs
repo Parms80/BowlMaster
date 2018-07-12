@@ -50,5 +50,6 @@ public class Pin : MonoBehaviour {
 	public void Lower() {
 		transform.Translate (new Vector3 (0.0f, -distToRaise, 0.0f), Space.World);
 		rigidBody.useGravity = true;
+		transform.rotation = Quaternion.Euler (-90f, 0f, 0f);
 	}
 }

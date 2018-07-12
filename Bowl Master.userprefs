@@ -1,10 +1,33 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ActionMaster.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Editor/ScoreMasterTest.cs">
     <Files>
-      <File FileName="Assets/Editor/ScoreMasterTest.cs" Line="94" Column="46" />
-      <File FileName="Assets/Scripts/ActionMaster.cs" Line="27" Column="42" />
+      <File FileName="Assets/Editor/ScoreMasterTest.cs" Line="94" Column="26" />
+      <File FileName="Assets/Scripts/ActionMaster.cs" Line="23" Column="55" />
+      <File FileName="Assets/Scripts/PinSetter.cs" Line="94" Column="1" />
+      <File FileName="Assets/Scripts/ScoreMaster.cs" Line="10" Column="16" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Bowl Master" expanded="True">
+            <Node name="Assembly-CSharp" expanded="True">
+              <Node name="Scripts" expanded="True" />
+            </Node>
+            <Node name="Assembly-CSharp-Editor" expanded="True">
+              <Node name="Editor" expanded="True">
+                <Node name="ScoreMasterTest.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
+        <State name="__root__">
+          <Node name="Bowl Master" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

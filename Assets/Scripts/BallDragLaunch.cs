@@ -26,19 +26,23 @@ public class BallDragLaunch : MonoBehaviour {
 	}
 
 	public void DragStart () {
-		dragStartPosition = Input.mousePosition;
-		dragStartTime = Time.time;
+		if (!ball.inPlay) {
+			dragStartPosition = Input.mousePosition;
+			dragStartTime = Time.time;
+		}
 	}
 
 	// Speed and direction of ball depends on speed and direction of drag
 	public void DragEnd () {
-		Vector3 dragEndPosition = Input.mousePosition;
-		float dragEndTime = Time.time;
-		float dragDuration = dragEndTime - dragStartTime;
-		float ballVelocityX = (dragEndPosition.x - dragStartPosition.x) / dragDuration;
-		float ballVelocityZ = (dragEndPosition.y - dragStartPosition.y) / dragDuration;
-		Vector3 launchVelocity = new Vector3 (ballVelocityX, 0, ballVelocityZ);
-		ball.LaunchBall (launchVelocity);
+		if (!ball.inPlay) {
+			Vector3 dragEndPosition = Input.mousePosition;
+			float dragEndTime = Time.time;
+			float dragDuration = dragEndTime - dragStartTime;
+			float ballVelocityX = (dragEndPosition.x - dragStartPosition.x) / dragDuration;
+			float ballVelocityZ = (dragEndPosition.y - dragStartPosition.y) / dragDuration;
+			Vector3 launchVelocity = new Vector3 (ballVelocityX, 0, ballVelocityZ);
+			ball.LaunchBall (launchVelocity);
+		}
 	}
 
 }
