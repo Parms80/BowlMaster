@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Editor\ScoreMasterTest(old).cs" />
      <Compile Include="Assets\Editor\ScoreMasterTest.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity 2017.3.1/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
