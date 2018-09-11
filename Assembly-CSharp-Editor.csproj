@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Editor\ScoreDisplayTest.cs" />
      <Compile Include="Assets\Editor\ScoreMasterTest(old).cs" />
      <Compile Include="Assets\Editor\ScoreMasterTest.cs" />
  <Reference Include="UnityEngine.UI">

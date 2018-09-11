@@ -180,6 +180,7 @@
 -define:UNITY_TEAM_LICENSE
 'Assets/GameManager.cs'
 'Assets/Scripts/ActionMaster.cs'
+'Assets/Scripts/ActionMaster3.cs'
 'Assets/Scripts/Ball.cs'
 'Assets/Scripts/BallDragLaunch.cs'
 'Assets/Scripts/CameraControl.cs'

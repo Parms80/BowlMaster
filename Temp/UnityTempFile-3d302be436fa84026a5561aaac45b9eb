@@ -2,9 +2,8 @@
 -target:library
 -nowarn:0169
 -langversion:4
--out:'Temp/Assembly-CSharp-Editor.dll'
+-out:'Temp/Assembly-CSharp.dll'
 -unsafe
--r:'Library/ScriptAssemblies/Assembly-CSharp.dll'
 -r:'/Applications/Unity 2017.3.1/Unity.app/Contents/Managed/UnityEditor.dll'
 -r:'/Applications/Unity 2017.3.1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll'
 -r:'/Applications/Unity 2017.3.1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.CoreModule.dll'
@@ -179,11 +178,24 @@
 -define:UNITY_EDITOR_OSX
 -define:ENABLE_NATIVE_ARRAY_CHECKS
 -define:UNITY_TEAM_LICENSE
-'Assets/Editor/ScoreMasterTest(old).cs'
-'Assets/Editor/ScoreMasterTest.cs'
--r:'/Applications/Unity 2017.3.1/Unity.app/Contents/MonoBleedingEdge/lib/mono/2.0-api/System.Runtime.Serialization.dll'
--r:'/Applications/Unity 2017.3.1/Unity.app/Contents/MonoBleedingEdge/lib/mono/2.0-api/System.Xml.Linq.dll'
--r:'/Applications/Unity 2017.3.1/Unity.app/Contents/MonoBleedingEdge/lib/mono/2.0-api/UnityScript.dll'
--r:'/Applications/Unity 2017.3.1/Unity.app/Contents/MonoBleedingEdge/lib/mono/2.0-api/UnityScript.Lang.dll'
--r:'/Applications/Unity 2017.3.1/Unity.app/Contents/MonoBleedingEdge/lib/mono/2.0-api/Boo.Lang.dll'
--sdk:2.0
+'Assets/GameManager.cs'
+'Assets/Scripts/ActionMaster.cs'
+'Assets/Scripts/ActionMaster3.cs'
+'Assets/Scripts/Ball.cs'
+'Assets/Scripts/BallDragLaunch.cs'
+'Assets/Scripts/CameraControl.cs'
+'Assets/Scripts/Destroyer.cs'
+'Assets/Scripts/Pin.cs'
+'Assets/Scripts/PinCounter.cs'
+'Assets/Scripts/PinSetter.cs'
+'Assets/Scripts/ScoreDisplay.cs'
+'Assets/Scripts/ScoreMaster.cs'
+'Assets/Scripts/Shredder.cs'
+'Assets/START Pack/Scripts/ActionMaster2.cs'
+'Assets/START Pack/Scripts/OurScoreDisplayTest1.cs'
+-r:'/Applications/Unity 2017.3.1/Unity.app/Contents/Mono/lib/mono/unity/System.Runtime.Serialization.dll'
+-r:'/Applications/Unity 2017.3.1/Unity.app/Contents/Mono/lib/mono/unity/System.Xml.Linq.dll'
+-r:'/Applications/Unity 2017.3.1/Unity.app/Contents/Mono/lib/mono/unity/UnityScript.dll'
+-r:'/Applications/Unity 2017.3.1/Unity.app/Contents/Mono/lib/mono/unity/UnityScript.Lang.dll'
+-r:'/Applications/Unity 2017.3.1/Unity.app/Contents/Mono/lib/mono/unity/Boo.Lang.dll'
+-sdk:unity
