@@ -35,15 +35,31 @@ public class ScoreDisplay : MonoBehaviour {
 				output += "-";
 			} else if (currentRoll >= 17 && roll == 10) {				// Strike in frame 10
 				output += "X";
+			} else if (currentRoll%2 == 1 && roll + rolls[currentRoll-1] == 10) {	// Spare
+				output += "/";
 			} else if (roll == 10) {									// Strike
 				output += "X ";
-			} else if (currentRoll %2 == 1 && roll + rolls[currentRoll-1] == 10) {	// Spare
-				output += "/";
 			} else {													// Normal 1-9 bowl
 				output += roll.ToString ();
 			}
 			currentRoll++;
 		}
+
+//		for (int i = 0; i < rolls.Count; i++) {
+//			int box = output.Length + 1;
+//
+//			if (rolls [i] == 0) {
+//				output += "-";
+//			} else if ((box % 2 == 0 || box == 21) && rolls [i - 1] + rolls [i] == 10) { // SPARE
+//				output += "/";
+//			} else if (box >= 19 && rolls [i] == 10) {						// STRIKE in frame 10
+//				output += "X";
+//			} else if (rolls [i] == 10) {								  	// STRIKE in frame 1-9
+//				output += "X ";
+//			} else {
+//				output += rolls [i].ToString ();							// Normal 1-9 bowl
+//			}
+//		}
 
 		return output;
 	}
